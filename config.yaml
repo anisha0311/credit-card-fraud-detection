@@ -1,0 +1,62 @@
+# ==============================
+# PATH CONFIG
+# ==============================
+paths:
+  model_path: "models/model_v1.pkl"
+  user_model_dir: "models/users/"
+  state_file: "data/user_state.json"
+
+# ==============================
+# MODEL SETTINGS
+# ==============================
+model:
+  threshold: 0.1              # lower threshold for fraud detection
+  use_probability: true       # use predict_proba
+
+# ==============================
+# FEATURE SETTINGS
+# ==============================
+features:
+  use_log_amount: true
+  use_balance_ratio: true
+  use_log_ratio: true
+  use_overdraft: true
+
+# ==============================
+# ONLINE LEARNING
+# ==============================
+online_learning:
+  buffer_size: 3              # train after 3 transactions
+  min_transactions: 10        # start user model after 10 txns
+  use_ground_truth: true
+
+# ==============================
+# FRAUD RULES
+# ==============================
+rules:
+  overdraft_check: true
+  ratio_threshold: 2
+  force_fraud_on_overdraft: true
+
+# ==============================
+# API SETTINGS
+# ==============================
+api:
+  host: "0.0.0.0"
+  port: 8000
+  reload: true
+
+# ==============================
+# FRONTEND SETTINGS
+# ==============================
+frontend:
+  port: 8501
+  address: "0.0.0.0"
+
+# ==============================
+# LOGGING
+# ==============================
+logging:
+  level: "INFO"
+  save_logs: false
+  log_file: "logs/app.log"
